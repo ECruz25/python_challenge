@@ -20,4 +20,4 @@ The following example will do a geolocation for the ips: 157.240.14.35 and 142.2
 
 The following example will do a geolocation for the ips within the file list_of_ips.txt
 ####
-`python main.py --file "list_of_ips.txt" --geo -rdap`
+`python main.py --file "list_of_ips.txt" --geo --rdap`
