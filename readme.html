@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/lib/index.min.js">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath@0.6.5/css/texmath.css">
+<link rel="stylesheet" href="https://gitcdn.xyz/repo/goessner/mdmath/master/css/vscode-texmath.css">
+
+</head>
+<body class="markdown-body">
+<h1 id="usage-3">Usage</h1>
+<h2 id="parameters-3">Parameters</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f, --file</td>
+<td>Use this if you wish to use a file with IPs to get the geo location or make a RDAP Lookup. A local filename has to be passed.</td>
+</tr>
+<tr>
+<td>-i, --ip</td>
+<td>Use this if you wish to pass a single or a list of IP addresses. Include all IP Address as a single string but separated with commas</td>
+</tr>
+<tr>
+<td>-g, --geo</td>
+<td>Use this to enable the geo location feature. This works as a boolean</td>
+</tr>
+<tr>
+<td>-r, -rdap</td>
+<td>Use this to enable the RDAP Lookup feature. This works as a boolean</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-3">Example</h3>
+<p>The following example will do a geolocation and RDAP Lookup for the ip: 157.240.14.35
+<code>python main.py -i &quot;157.240.14.35&quot; -g -r</code></p>
+<p>The following example will do a geolocation for the ips: 157.240.14.35 and 142.250.64.206
+<code>python main.py -i &quot;157.240.14.35,142.250.64.206&quot; --geo</code></p>
+<p>The following example will do a geolocation for the ips within the file list_of_ips.txt
+<code>python main.py --file &quot;list_of_ips.txt&quot; --geo -rdap</code></p>
+
+</body></html>
