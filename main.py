@@ -1,16 +1,16 @@
 import getopt, sys
 
-from models import TxtFileHandler, IPParser, IpListGeoLocation
+# from models import TxtFileHandler, IPParser, IpListGeoLocation
+from models.FileHandler import TxtFileHandler 
+from models.Parser import IPParser
+from models.IPData import IpListGeoLocation, IPListRDAPLookUp
 
 
-def run(file_name):
+def get_file_data(file_name):
     txt_handler = TxtFileHandler()
     file_content = txt_handler.read(file_name)
-    parser = IPParser(file_content)
-    ips = parser.parse()
-    geo_locator = IpListGeoLocation(ips[0:10])
-    data = geo_locator.get_data()
-    print(data)
+    get_ip_data(file_content, True, True)
+
 
 def get_ip_data(ip, geo_locator: bool, rdap_lookup: bool):
     parser = IPParser(ip)
@@ -21,7 +21,9 @@ def get_ip_data(ip, geo_locator: bool, rdap_lookup: bool):
         geo_location_data = geo_location.get_data()
         data.append(geo_location_data)
     if rdap_lookup:
-        pass
+        rdap_lookup_ = IPListRDAPLookUp(ips)
+        rdap_lookup_data = rdap_lookup_.get_data()
+        data.append(rdap_lookup_data)
     print(data) 
 
 
@@ -51,7 +53,7 @@ def run_with_args():
             run_with_file = True
             file_name = current_value
     if run_with_file:
-        run(file_name)
+        get_file_data(file_name)
     else:
         get_ip_data(ip, get_geo_locator, make_rdap_lookup)
 
